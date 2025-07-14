@@ -35,11 +35,12 @@ def spiel_starten():
             break
 while True:
     spiel_starten()
-    nochmal = input("Magst du nochma? (j/n): ")
-    if nochmal.lower() == "j":
-        continue
-    elif nochmal.lower() == "n":
-        print("Danke fürs Dabeisein, bis bald")
-        break
-    else:
-       nochmal = input("Wir können nur mit nem Ja oder Nein weitermachen (j/n)")
+    while True:
+        nochmal = input("Magst du nochma? (j/n): ")
+        if nochmal.lower() == "j":
+            continue
+        elif nochmal.lower() == "n":
+            print("Danke fürs Dabeisein, bis bald")
+            exit()
+        else:
+            print("Du solltest schon j für Ja oder n für Nein eintippen!")
