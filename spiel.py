@@ -1,8 +1,21 @@
 import random
 def spiel_starten():
-    geheime_zahl = random.randint(1,100)
-    print("Lass uns ein Spiel Spielen")
-    print("Ich denke an eine Zahl zwischen 1 und 100")
+    while True:
+        print("Lass uns ein Zahlenratespiel spielen.\nIch denke an eine Zahl zwischen 1 und deinem Schweregrad!")
+        schwere = input("Möchtest du leicht(1-10), mittel(1-100) oder schwer(1-1000) spielen? (10/100/1000)")
+        if not schwere.isdigit():
+            print("Bitte gib nur eine der drei Zahlen ein!")
+            continue
+        schwere = int(schwere)
+        if schwere not in [10,100,1000]:
+            print("Bitte gib nur eine der drei genannten Zahlen ein!")
+            continue
+        else:
+            break
+
+    geheime_zahl = random.randint(1,schwere)
+    print("Lass uns loslegen")
+    print(f"Ich denke an eine Zahl zwischen 1 und {schwere}")
     versuche = 0
     while True:
         eingabe = input("Rate die Zahl: ")
@@ -13,11 +26,11 @@ def spiel_starten():
         tipp = int(eingabe)
         versuche +=1
         if tipp < geheime_zahl:
-         print("Das war zu klein!")
+            print("Das war zu klein!")
         elif tipp > geheime_zahl:
-         print("probiers mal kleiner")
+            print("probiers mal kleiner")
         else:
-            print(f"Super, die Zahl war {geheime_zahl}.")
+            print(f"\nSuper, die Zahl war {geheime_zahl}.")
             print(f"du hast {versuche} Versuche gebraucht.")
             break
 while True:
