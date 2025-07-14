@@ -1,5 +1,7 @@
 import random
+highscore = None
 def spiel_starten():
+    global highscore
     while True:
         print("Lass uns ein Zahlenratespiel spielen.\nIch denke an eine Zahl zwischen 1 und deinem Schweregrad!")
         schwere = input("Möchtest du leicht(1-10), mittel(1-100) oder schwer(1-1000) spielen? (10/100/1000)")
@@ -32,13 +34,20 @@ def spiel_starten():
         else:
             print(f"\nSuper, die Zahl war {geheime_zahl}.")
             print(f"du hast {versuche} Versuche gebraucht.")
+
+            if highscore is None or versuche < highscore:
+                highscore = versuche
+                print("Glückwunsch, du hast einen neuen Rekord aufgestellt")
+            else:
+                print(f"Der aktuelle Rekord liegt bei {highscore} Versuchen!")
+            
             break
 while True:
     spiel_starten()
     while True:
         nochmal = input("Magst du nochma? (j/n): ")
         if nochmal.lower() == "j":
-            continue
+            break
         elif nochmal.lower() == "n":
             print("Danke fürs Dabeisein, bis bald")
             exit()
